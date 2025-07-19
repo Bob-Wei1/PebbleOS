@@ -1050,6 +1050,7 @@ elif bld.is_asterix():
         ],
         use=[
             'driver_lsm6dso',
+            'driver_mmc5603nj',
             'fw_includes',
             'root_includes',
         ],
@@ -1846,6 +1847,22 @@ if mcu_family == 'NRF52840':
             'fw_includes',
             'freertos',
             'hal_nordic',
+        ],
+    )
+
+if bld.is_asterix():
+    bld.objects(
+        name='driver_mmc5603nj',
+        source=[
+            'imu/mmc5603nj/mmc5603nj.c',
+        ],
+        use=[
+            'driver_gpio',
+            'driver_exti',
+            'driver_i2c',
+            'driver_periph_config',
+            'fw_includes',
+            'root_includes',
         ],
     )
 
